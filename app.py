@@ -3,9 +3,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def home_view():
-        return "<h1>Hello World!</h1>"
+        return "<h1>This is Flask API for Manychat <br> Just send json data and it will convertd for you</h1>"
 
-@app.route('/post_json', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process_json():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
