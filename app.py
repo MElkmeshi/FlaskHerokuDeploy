@@ -11,7 +11,10 @@ def process_json():
     if (content_type == 'application/json'):
         json = request.json
         num = len(json["products"])
-        cardnum = 3
+        if (num < 10) :
+                cardnum = num
+        else:
+                cardnum = 10
         manychat = {"version": "v2","content": {"messages": [],"actions": [],"quick_replies": []}}
         x =1
         for i in range (num//cardnum):
