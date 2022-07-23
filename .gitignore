@@ -102,3 +102,8 @@ ENV/
 
 # Pipenv
 Pipfile.lock
+
+#requests
+*.pyc
+*.pyo
+.DS_Store
