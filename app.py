@@ -1,20 +1,20 @@
 from flask import Flask, request
+import requests
 app = Flask(__name__)
 
-@app.route("/")
-def home_view():
-        return "<h1>This is Flask API for Manychat <br> Just send json data and it will convertd for you</h1>"
+@app.route('/')
+def home():
+    return "home"
 
 @app.route('/', methods=['POST'])
 def process_json():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
-        json = request.json
+        body = request.json
+        api_url = "https://resturantchatbot.herokuapp.com/api/products/bot"
+        json = requests.post(api_url, json=body).json()
         num = len(json["products"])
-        if (num < 10) :
-                cardnum = num
-        else:
-                cardnum = 10
+        cardnum = 3
         manychat = {"version": "v2","content": {"messages": [],"actions": [],"quick_replies": []}}
         x =1
         for i in range (num//cardnum):
