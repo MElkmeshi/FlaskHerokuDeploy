@@ -14,7 +14,7 @@ def process_json():
         api_url = "https://resturantchatbot.herokuapp.com/api/products/bot"
         json = requests.post(api_url, json=body).json()
         num = len(json["products"])
-        cardnum = 3
+        cardnum = 10
         manychat = {"version": "v2","content": {"messages": [],"actions": [],"quick_replies": []}}
         x =1
         for i in range (num//cardnum):
